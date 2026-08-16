@@ -1,0 +1,284 @@
+/*
+ * Guardion — Content Script Styles
+ * Modern cybersecurity-themed banner and AI fix panel.
+ * Brand: black/orange/cyan
+ */
+
+/* ──────── Banner Container ──────── */
+.guardion-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483647;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: 13px;
+  animation: guardion-slide-down 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes guardion-slide-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes guardion-slide-up {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}
+
+.guardion-banner.guardion-closing {
+  animation: guardion-slide-up 0.25s ease-in forwards;
+}
+
+.guardion-banner-content {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ──────── Banner Types ──────── */
+.guardion-info {
+  background: linear-gradient(135deg, #09090b, #18181b);
+  color: #a1a1aa;
+  border-bottom: 2px solid #06b6d4;
+}
+
+.guardion-warn {
+  background: linear-gradient(135deg, #09090b, #1c1306);
+  color: #fef3c7;
+  border-bottom: 2px solid #f97316;
+}
+
+.guardion-block {
+  background: linear-gradient(135deg, #09090b, #1a0505);
+  color: #fecaca;
+  border-bottom: 2px solid #ef4444;
+}
+
+/* ──────── Content ──────── */
+.guardion-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.guardion-shield-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.guardion-info .guardion-shield-icon { color: #06b6d4; }
+.guardion-warn .guardion-shield-icon { color: #f97316; }
+.guardion-block .guardion-shield-icon { color: #ef4444; }
+
+.guardion-message {
+  flex: 1;
+  line-height: 1.5;
+  min-width: 200px;
+  font-size: 12px;
+}
+
+.guardion-message strong {
+  font-weight: 700;
+}
+
+.guardion-risk-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.guardion-warn .guardion-risk-badge {
+  background: rgba(249,115,22,0.2);
+  color: #fb923c;
+  border: 1px solid rgba(249,115,22,0.3);
+}
+.guardion-block .guardion-risk-badge {
+  background: rgba(239,68,68,0.2);
+  color: #f87171;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+.guardion-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.guardion-cat-tag {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  color: #d4d4d8;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.guardion-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ──────── Buttons ──────── */
+.guardion-btn {
+  padding: 5px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.guardion-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.guardion-btn-dismiss {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.guardion-btn-dismiss:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #e4e4e7;
+}
+
+.guardion-btn-proceed {
+  background: #f97316;
+  color: #fff;
+}
+.guardion-btn-proceed:hover {
+  background: #ea580c;
+}
+
+.guardion-btn-sanitize {
+  background: #06b6d4;
+  color: #fff;
+}
+.guardion-btn-sanitize:hover {
+  background: #0891b2;
+}
+
+.guardion-btn-fix {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+}
+.guardion-btn-fix:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* ──────── AI Fix Panel ──────── */
+.guardion-fix-panel {
+  margin: 0;
+  padding: 0 16px 12px 16px;
+  background: #09090b;
+  border-bottom: 2px solid rgba(34,197,94,0.3);
+  animation: guardion-expand 0.3s ease-out;
+}
+
+@keyframes guardion-expand {
+  from { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+  to { max-height: 500px; opacity: 1; }
+}
+
+.guardion-fix-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 0 8px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.guardion-fix-icon {
+  width: 16px;
+  height: 16px;
+  color: #22c55e;
+}
+
+.guardion-fix-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #22c55e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.guardion-fix-body {
+  font-size: 12px;
+  color: #d4d4d8;
+  line-height: 1.6;
+  padding: 10px 12px;
+  background: rgba(34,197,94,0.04);
+  border: 1px solid rgba(34,197,94,0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+.guardion-fix-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #71717a;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.guardion-fix-prompt {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Consolas', 'SF Mono', monospace;
+  font-size: 12px;
+  color: #e4e4e7;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.guardion-fix-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.guardion-highlighted {
+  background: rgba(249,115,22,0.15);
+  color: #fb923c;
+  padding: 0 3px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.guardion-replaced {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+  padding: 0 3px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.guardion-btn-proceed:hover {
+  background: #fbbf24;
+}
+
+.guardion-btn-sanitize {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.guardion-btn-sanitize:hover {
+  background: #34d399;
+}
