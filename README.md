@@ -1,4 +1,4 @@
-# 🛡️ Guardion — AI-Powered Security Intelligence Platform
+# AI-Powered Security Intelligence Platform
 
 > **Protect what you type. Secure what you ship. Fix what's broken.**
 
