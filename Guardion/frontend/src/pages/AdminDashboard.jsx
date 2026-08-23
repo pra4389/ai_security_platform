@@ -8,7 +8,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { adminGetUsers, adminGetStats, adminGetPromptLogs } from "../api";
 
-export default function AdminDashboard() {
+function AdminDashboard() {
   const { user, logout, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("stats");
@@ -268,3 +268,5 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+export default AdminDashboard;
